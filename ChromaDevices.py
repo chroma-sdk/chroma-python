@@ -80,7 +80,7 @@ class Mousepad:
             print("Unexpected Error!")
             raise
 
-class Mousepad:
+class ChromaLink:
     _MaxLED = 5
     _ColorGrid = [ChromaDatatypes.ChromaColor(red=0, green=0, blue=0) for x in range(5)]
 

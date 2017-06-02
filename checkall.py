@@ -11,7 +11,7 @@ Info.DeveloperContact = "Wubba-lubba@dub-dub.com"
 Info.Category = "application"
 Info.SupportedDevices = ["keyboard,mouse,mousepad"]
 Info.Description = "Oh Rick, I don't know if that's a good idea."
-Info.Title = ""
+Info.Title = "Test"
 
 App = ChromaApp(Info)
 

@@ -25,7 +25,6 @@ class ChromaApp:
                 "category": Info.Category
             }
             response = requests.post(url=url, json=data)
-
             self.SessionID, self.URI = response.json()["sessionid"], response.json()["uri"]
             self.heartbeat = Heartbeat(self.URI)
             self.Keyboard = Keyboard(self.URI)
