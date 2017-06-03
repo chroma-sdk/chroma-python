@@ -1,6 +1,4 @@
-from ChromaApp import ChromaApp,ChromaAppInfo
-from ChromaDatatypes import ChromaColor
-from ChromaEnums import Colors
+from ChromaPython import ChromaApp,ChromaAppInfo,ChromaColor,Colors
 from time import sleep
 
 
