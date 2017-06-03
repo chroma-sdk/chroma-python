@@ -1,11 +1,11 @@
-import ChromaDatatypes
-import ChromaEnums
+from .ChromaDatatypes import ChromaColor, checkresult
+from .ChromaEnums import KeyboardKeys
 import requests
 
 
 class Mousepad:
     _MaxLED = 15
-    _ColorGrid = [ChromaDatatypes.ChromaColor(red=0, green=0, blue=0) for x in range(15)]
+    _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(15)]
 
     def __init__(self, uri=str):
         try:
@@ -24,7 +24,7 @@ class Mousepad:
     def MaxColumn(self):
         return self.MaxColumn
 
-    def setStatic(self, color=ChromaDatatypes.ChromaColor):
+    def setStatic(self, color=ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -32,7 +32,7 @@ class Mousepad:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -42,7 +42,7 @@ class Mousepad:
             data = {
                 "effect": "CHROMA_NONE"
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -66,7 +66,7 @@ class Mousepad:
                 "effect": "CHROMA_CUSTOM",
                 "param": Tmp
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
             print("Unexpected Error!")
@@ -80,9 +80,88 @@ class Mousepad:
             print("Unexpected Error!")
             raise
 
+class Headset:
+    _MaxLED = 2
+    _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(2)]
+
+    def __init__(self, uri=str):
+        try:
+            self.URI = uri + "/mousepad"
+            print(self.URI)
+
+        except:
+            print("Unexpected Error!")
+            raise
+
+    @property
+    def MaxRow(self):
+        return self.MaxRow
+
+    @property
+    def MaxColumn(self):
+        return self.MaxColumn
+
+    def setStatic(self, color=ChromaColor):
+        try:
+            data = {
+                "effect": "CHROMA_STATIC",
+                "param": {
+                    "color": int(color.getHexBGR(), 16)
+                }
+            }
+            return checkresult(requests.put(url=self.URI, json=data).json())
+        except:
+            print("Unexpected Error!")
+            raise
+
+    def setNone(self):
+        try:
+            data = {
+                "effect": "CHROMA_NONE"
+            }
+            return checkresult(requests.put(url=self.URI, json=data).json())
+        except:
+            print("Unexpected Error!")
+            raise
+
+    def setCustomGrid(self, grid):
+        try:
+            for x in range(0, len(self._ColorGrid)):
+                self._ColorGrid[x].set(red=grid[x].red, green=grid[x].green, blue=grid[x].blue)
+        except:
+            print("Unexpected Error!")
+            raise
+
+    def applyGrid(self):
+        try:
+            Tmp = [0 for x in range(2)]
+
+            for x in range(0, len(self._ColorGrid)):
+                Tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
+
+            data = {
+                "effect": "CHROMA_CUSTOM",
+                "param": Tmp
+            }
+            return checkresult(requests.put(url=self.URI, json=data).json())
+
+        except:
+            print("Unexpected Error!")
+            raise
+
+    def setPosition(self, x=0, color=None):
+        try:
+            red, green, blue = color.getRGB()
+            self._ColorGrid[x].set(red=red, green=green, blue=blue)
+        except:
+            print("Unexpected Error!")
+            raise
+
+
+
 class ChromaLink:
     _MaxLED = 5
-    _ColorGrid = [ChromaDatatypes.ChromaColor(red=0, green=0, blue=0) for x in range(5)]
+    _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(5)]
 
     def __init__(self, uri=str):
         try:
@@ -101,7 +180,7 @@ class ChromaLink:
     def MaxColumn(self):
         return self.MaxColumn
 
-    def setStatic(self, color=ChromaDatatypes.ChromaColor):
+    def setStatic(self, color=ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -109,7 +188,7 @@ class ChromaLink:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -119,7 +198,7 @@ class ChromaLink:
             data = {
                 "effect": "CHROMA_NONE"
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -143,7 +222,7 @@ class ChromaLink:
                 "effect": "CHROMA_CUSTOM",
                 "param": Tmp
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
             print("Unexpected Error!")
@@ -164,7 +243,7 @@ class ChromaLink:
 class Mouse:
     _MaxRow = 9
     _MaxColumn = 7
-    _ColorGrid = [[ChromaDatatypes.ChromaColor(red=0, green=0, blue=0) for x in range(7)] for y in range(9)]
+    _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(7)] for y in range(9)]
 
     def __init__(self, uri=str):
         try:
@@ -182,7 +261,7 @@ class Mouse:
     def MaxColumn(self):
         return self.MaxColumn
 
-    def setStatic(self, color=ChromaDatatypes.ChromaColor):
+    def setStatic(self, color=ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -190,7 +269,7 @@ class Mouse:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -200,7 +279,7 @@ class Mouse:
             data = {
                 "effect": "CHROMA_NONE"
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -226,7 +305,7 @@ class Mouse:
                 "effect": "CHROMA_CUSTOM2",
                 "param": [Tmp[0], Tmp[1], Tmp[2], Tmp[3], Tmp[4], Tmp[5], Tmp[6], Tmp[7], Tmp[8]]
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -243,8 +322,8 @@ class Mouse:
 class Keyboard:
     _MaxRow = 6
     _MaxColumn = 22
-    _ColorGrid = [[ChromaDatatypes.ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
-    _Keys = ChromaEnums.KeyboardKeys()
+    _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
+    _Keys = KeyboardKeys()
 
     def __init__(self, URI=str):
         try:
@@ -262,7 +341,7 @@ class Keyboard:
     def MaxColumn(self):
         return self.MaxColumn
 
-    def setStatic(self, color=ChromaDatatypes.ChromaColor):
+    def setStatic(self, color=ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -270,7 +349,7 @@ class Keyboard:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -280,7 +359,7 @@ class Keyboard:
             data = {
                 "effect": "CHROMA_NONE"
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise
@@ -306,7 +385,7 @@ class Keyboard:
                 "effect": "CHROMA_CUSTOM",
                 "param": [Tmp[0], Tmp[1], Tmp[2], Tmp[3], Tmp[4], Tmp[5]]
             }
-            return ChromaDatatypes.checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self.URI, json=data).json())
         except:
             print("Unexpected Error!")
             raise

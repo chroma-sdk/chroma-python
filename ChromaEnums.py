@@ -1,9 +1,9 @@
-from ChromaDatatypes import ChromaColor
+from .ChromaDatatypes import ChromaColor
 
 
 class Colors:
     RED = ChromaColor(red=255,green=0,blue=0)
-    GREEN = ChromaColor(red=0,green=255,blue=0)
+    LIME = ChromaColor(red=0,green=255,blue=0)
     BLUE = ChromaColor(red=0,green=0,blue=255)
     BLACK = ChromaColor(red=0, green=0, blue=0)
     WHITE = ChromaColor(red=255, green=255, blue=255)

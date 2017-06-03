@@ -1,9 +1,6 @@
 import requests
-from time import sleep
-from ChromaDevices import Keyboard
-from ChromaDevices import Mouse
-from ChromaDevices import Mousepad
-from ChromaDatatypes import Heartbeat, ChromaAppInfo
+from .ChromaDevices import Keyboard, Mouse, Mousepad, ChromaLink, Headset
+from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 
 
 
@@ -30,6 +27,8 @@ class ChromaApp:
             self.Keyboard = Keyboard(self.URI)
             self.Mouse = Mouse(self.URI)
             self.Mousepad = Mousepad(self.URI)
+            self.Headset = Headset(self.URI)
+            self.ChromaLink = ChromaLink(self.URI)
         except:
             print("Unexpected Error!")
             raise
