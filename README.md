@@ -1,4 +1,8 @@
-# ChromaPy
+# ChromaPython
+
+
+[![Build status](https://ci.appveyor.com/api/projects/status/w308efi8uqo0lvcr?svg=true)](https://ci.appveyor.com/project/Vaypron/chroma-python)
+
 
 Requirements:
 
