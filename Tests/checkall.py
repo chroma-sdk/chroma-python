@@ -13,9 +13,9 @@ Info.Title = "Test"
 
 App = ChromaApp(Info)
 print("Setting all devices to blue")
-print(App.Keyboard.setStatic(Colors.BLUE))
+print(App.Keyboard.setStatic(Colors.GREEN))
 print(App.Mousepad.setStatic(Colors.BLUE))
-print(App.Mouse.setStatic(Colors.BLUE))
+print(App.Mouse.setStatic(Colors.YELLOW))
 sleep(5)
 KeyboardGrid = [[ChromaColor(red=255,blue=0,green=0) for x in range(22)] for y in range(6)]
 MouseGrid = [[ChromaColor(red=255,blue=0,green=0) for x in range(7)] for y in range(9)]

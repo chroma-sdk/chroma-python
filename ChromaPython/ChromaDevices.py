@@ -50,7 +50,8 @@ class Mousepad:
     def setCustomGrid(self, grid):
         try:
             for x in range(0, len(self._ColorGrid)):
-                self._ColorGrid[x].set(red=grid[x].red, green=grid[x].green, blue=grid[x].blue)
+                self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
+
         except:
             print("Unexpected Error!")
             raise
@@ -74,11 +75,14 @@ class Mousepad:
 
     def setPosition(self, x=0, color=None):
         try:
+
             red, green, blue = color.getRGB()
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
+
         except:
             print("Unexpected Error!")
             raise
+
 
 class Headset:
     _MaxLED = 2
@@ -127,7 +131,8 @@ class Headset:
     def setCustomGrid(self, grid):
         try:
             for x in range(0, len(self._ColorGrid)):
-                self._ColorGrid[x].set(red=grid[x].red, green=grid[x].green, blue=grid[x].blue)
+                self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
+
         except:
             print("Unexpected Error!")
             raise
@@ -151,12 +156,13 @@ class Headset:
 
     def setPosition(self, x=0, color=None):
         try:
+
             red, green, blue = color.getRGB()
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
+
         except:
             print("Unexpected Error!")
             raise
-
 
 
 class ChromaLink:
@@ -206,7 +212,8 @@ class ChromaLink:
     def setCustomGrid(self, grid):
         try:
             for x in range(0, len(self._ColorGrid)):
-                self._ColorGrid[x].set(red=grid[x].red, green=grid[x].green, blue=grid[x].blue)
+                self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
+
         except:
             print("Unexpected Error!")
             raise
@@ -230,14 +237,13 @@ class ChromaLink:
 
     def setPosition(self, x=0, color=None):
         try:
+
             red, green, blue = color.getRGB()
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
+
         except:
             print("Unexpected Error!")
             raise
-
-
-
 
 
 class Mouse:
@@ -288,7 +294,8 @@ class Mouse:
         try:
             for i in range(0, len(self._ColorGrid)):
                 for j in range(0, len(self._ColorGrid[i])):
-                    self._ColorGrid[i][j].set(red=grid[i][j].red, green=grid[i][j].green, blue=grid[i][j].blue)
+                    self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
+
         except:
             print("Unexpected Error!")
             raise
@@ -312,8 +319,11 @@ class Mouse:
 
     def setPosition(self, x=0, y=0, color=None):
         try:
+
             red, green, blue = color.getRGB()
             self._ColorGrid[y][x].set(red=red, green=green, blue=blue)
+
+
         except:
             print("Unexpected Error!")
             raise
@@ -368,7 +378,8 @@ class Keyboard:
         try:
             for i in range(0, len(self._ColorGrid)):
                 for j in range(0, len(self._ColorGrid[i])):
-                    self._ColorGrid[i][j].set(red=grid[i][j].red, green=grid[i][j].green, blue=grid[i][j].blue)
+                    self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
+
         except:
             print("Unexpected Error!")
             raise
@@ -392,8 +403,11 @@ class Keyboard:
 
     def setPosition(self, x=0, y=0, Color=None):
         try:
+
             red, green, blue = Color.getRGB()
             self._ColorGrid[y][x].set(red=red, green=green, blue=blue)
+
+
         except:
             print("Unexpected Error!")
             raise
@@ -404,15 +418,17 @@ class Keyboard:
                 for item in keys:
                     row = int(item._Key, 16) >> 8
                     col = int(item._Key, 16) & 0xFF
+
                     red, green, blue = item._Color.getRGB()
                     self._ColorGrid[row][col].set(red=red, green=green, blue=blue)
 
             if key is not None:
                 row = int(int(key._Key, 16) >> 8)
                 col = int(int(key._Key, 16) & 0xFF)
-                red, green, blue = key._Color.getRGB()
 
+                red, green, blue = key._Color.getRGB()
                 self._ColorGrid[row][col].set(red=red, green=green, blue=blue)
+
         except:
             print("Unexpected Error!")
             raise

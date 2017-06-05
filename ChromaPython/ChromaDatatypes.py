@@ -1,7 +1,6 @@
 from time import sleep
 import threading
 import requests
-from typing import List
 
 
 def checkresult(result):
@@ -60,39 +59,14 @@ class ChromaKey:
 
 
 class ChromaColor:
-    red = 0
-    blue = 0
-    green = 0
+    _red = 0
+    _blue = 0
+    _green = 0
 
     def __init__(self, red=None, green=None, blue=None, hex=None):
         try:
-            if None in (red, blue, green) and hex is not None:
-                if hex[0] == "#":
-                    color = hex[1:]
-                elif hex[0] == "0" and hex[1] == "x":
-                    color = hex[2:]
-                else:
-                    raise ValueError("Is not Hex-Value!")
-                tmp = int(color, 16)
+            self.set(red=red,green=green,blue=blue,hex=hex)
 
-                self.blue = tmp & 255
-                self.green = (tmp >> 8) & 255
-                self.red = (tmp >> 16) & 255
-
-            elif None not in (red, blue, green) and hex is None:
-                if red not in range(0, 256):
-                    raise ValueError("Red-value out of range!")
-                if green not in range(0, 256):
-                    raise ValueError("Green-value out of range!")
-                if blue not in range(0, 256):
-                    raise ValueError("Blue-value out of range!")
-                self.blue = blue
-                self.red = red
-                self.green = green
-
-            else:
-                print("Unexpected Error!")
-                raise
         except:
             print("Unexpected Error!")
             raise
@@ -108,9 +82,9 @@ class ChromaColor:
                     raise ValueError("Is not Hex-Value!")
                 tmp = int(color, 16)
 
-                self.blue = tmp & 255
-                self.green = (tmp >> 8) & 255
-                self.red = (tmp >> 16) & 255
+                self._blue = tmp & 255
+                self._green = (tmp >> 8) & 255
+                self._red = (tmp >> 16) & 255
             elif None not in (red, blue, green) and hex is None:
                 if red not in range(0, 256):
                     raise ValueError("Red-value out of range!")
@@ -118,33 +92,31 @@ class ChromaColor:
                     raise ValueError("Green-value out of range!")
                 if blue not in range(0, 256):
                     raise ValueError("Blue-value out of range!")
-                self.blue = blue
-                self.red = red
-                self.green = green
-            else:
-                print("Unexpected Error!")
-                raise
+                self._blue = blue
+                self._red = red
+                self._green = green
+
         except:
             print("Unexpected Error!")
             raise
 
     def getRGB(self):
         try:
-            return self.red, self.green, self.blue
+            return self._red, self._green, self._blue
         except:
             print("Unexpected Error!")
             raise
 
     def getHexBGR(self):
         try:
-            return '%02x%02x%02x' % (self.blue, self.green, self.red)
+            return '%02x%02x%02x' % (self._blue, self._green, self._red)
         except:
             print("Unexpected Error!")
             raise
 
     def getHexRGB(self):
         try:
-            return '%02x%02x%02x' % (self.red, self.green, self.blue)
+            return '%02x%02x%02x' % (self._red, self._green, self._blue)
         except:
             print("Unexpected Error!")
             raise

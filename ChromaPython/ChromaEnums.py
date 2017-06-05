@@ -2,9 +2,9 @@ from .ChromaDatatypes import ChromaColor
 
 
 class Colors:
-    RED = ChromaColor(red=255,green=0,blue=0)
-    LIME = ChromaColor(red=0,green=255,blue=0)
-    BLUE = ChromaColor(red=0,green=0,blue=255)
+    RED = ChromaColor(red=255, green=0, blue=0)
+    LIME = ChromaColor(red=0, green=255, blue=0)
+    BLUE = ChromaColor(red=0, green=0, blue=255)
     BLACK = ChromaColor(red=0, green=0, blue=0)
     WHITE = ChromaColor(red=255, green=255, blue=255)
     YELLOW = ChromaColor(red=255, green=255, blue=0)
@@ -147,5 +147,3 @@ class KeyboardKeys:
     Kor6 = '0x0509'
     Kor7 = '0x050A'
     Invalid = '0xFFFF'
-
-
