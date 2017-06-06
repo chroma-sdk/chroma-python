@@ -431,7 +431,7 @@ class Keypad:
     def __init__(self, URI=str):
         try:
             self.URI = URI + '/keypad'
-            
+
         except:
             print('Unexpected Error!')
             raise

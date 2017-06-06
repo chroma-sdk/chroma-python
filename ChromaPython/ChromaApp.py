@@ -37,6 +37,8 @@ class ChromaApp:
             print(requests.get(url='http://localhost:54235/razer/chromasdk').json()['version'])
         except:
             print('Unexpected Error!')
+            raise
+
     def __del__(self):
         print('Im dying')
         self.heartbeat.stop()
