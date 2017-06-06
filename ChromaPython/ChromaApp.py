@@ -6,9 +6,6 @@ from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 
 
 class ChromaApp:
-    heartbeat = None
-    SessionID = "none"
-    URI = "none"
     def __init__(self, Info=ChromaAppInfo):
         try:
             url = 'http://localhost:54235/razer/chromasdk'
@@ -24,7 +21,7 @@ class ChromaApp:
                 "category": Info.Category
             }
             response = requests.post(url=url, json=data)
-            self.SessionID, self.URI = response.json()["sessionid"], response.json()["uri"]
+            self.SessionID, self.URI = response.json()['sessionid'], response.json()['uri']
             self.heartbeat = Heartbeat(self.URI)
             self.Keyboard = Keyboard(self.URI)
             self.Mouse = Mouse(self.URI)
@@ -32,10 +29,16 @@ class ChromaApp:
             self.Headset = Headset(self.URI)
             self.ChromaLink = ChromaLink(self.URI)
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
+
+    def Version(self):
+        try:
+            print(requests.get(url='http://localhost:54235/razer/chromasdk').json()['version'])
+        except:
+            print('Unexpected Error!')
     def __del__(self):
-        print("Im dying")
+        print('Im dying')
         self.heartbeat.stop()
 
 

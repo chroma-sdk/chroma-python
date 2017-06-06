@@ -9,11 +9,11 @@ class Mousepad:
 
     def __init__(self, uri=str):
         try:
-            self.URI = uri + "/mousepad"
-            print(self.URI)
+            self.URI = uri + '/mousepad'
+
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     @property
@@ -30,7 +30,7 @@ class Mousepad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setNone(self):
@@ -40,7 +40,7 @@ class Mousepad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomGrid(self, grid):
@@ -49,7 +49,7 @@ class Mousepad:
                 self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def applyGrid(self):
@@ -66,7 +66,7 @@ class Mousepad:
             return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setPosition(self, x=0, color=None):
@@ -76,7 +76,7 @@ class Mousepad:
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
 
@@ -86,11 +86,11 @@ class Headset:
 
     def __init__(self, uri=str):
         try:
-            self.URI = uri + "/mousepad"
-            print(self.URI)
+            self.URI = uri + '/headset'
+
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     @property
@@ -107,7 +107,7 @@ class Headset:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setNone(self):
@@ -117,7 +117,7 @@ class Headset:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomGrid(self, grid):
@@ -126,7 +126,7 @@ class Headset:
                 self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def applyGrid(self):
@@ -143,7 +143,7 @@ class Headset:
             return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setPosition(self, x=0, color=None):
@@ -153,7 +153,7 @@ class Headset:
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
 
@@ -163,11 +163,11 @@ class ChromaLink:
 
     def __init__(self, uri=str):
         try:
-            self.URI = uri + "/chromalink"
-            print(self.URI)
+            self.URI = uri + '/chromalink'
+
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     @property
@@ -184,7 +184,7 @@ class ChromaLink:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setNone(self):
@@ -194,7 +194,7 @@ class ChromaLink:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomGrid(self, grid):
@@ -203,7 +203,7 @@ class ChromaLink:
                 self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def applyGrid(self):
@@ -220,7 +220,7 @@ class ChromaLink:
             return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setPosition(self, x=0, color=None):
@@ -230,7 +230,7 @@ class ChromaLink:
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
 
@@ -241,10 +241,10 @@ class Mouse:
 
     def __init__(self, uri=str):
         try:
-            self.URI = uri + "/mouse"
-            print(self.URI)
+            self.URI = uri + '/mouse'
+
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     @property
@@ -265,7 +265,7 @@ class Mouse:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setNone(self):
@@ -275,7 +275,7 @@ class Mouse:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomGrid(self, grid):
@@ -285,7 +285,7 @@ class Mouse:
                     self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def applyGrid(self):
@@ -302,7 +302,7 @@ class Mouse:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setPosition(self, x=0, y=0, color=None):
@@ -313,7 +313,7 @@ class Mouse:
             return True
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
 
@@ -325,10 +325,10 @@ class Keyboard:
 
     def __init__(self, URI=str):
         try:
-            self.URI = URI + "/keyboard"
-            print(self.URI)
+            self.URI = URI + '/keyboard'
+
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     @property
@@ -349,7 +349,7 @@ class Keyboard:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setNone(self):
@@ -359,7 +359,7 @@ class Keyboard:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomGrid(self, grid):
@@ -369,7 +369,7 @@ class Keyboard:
                     self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def applyGrid(self):
@@ -386,7 +386,7 @@ class Keyboard:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setPosition(self, x=0, y=0, color=None):
@@ -397,7 +397,7 @@ class Keyboard:
             return True
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomKey(self, key=None, keys=None):
@@ -418,7 +418,7 @@ class Keyboard:
                 self._ColorGrid[row][col].set(red=red, green=green, blue=blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
 
@@ -430,10 +430,10 @@ class Keypad:
 
     def __init__(self, URI=str):
         try:
-            self.URI = URI + "/keypad"
-            print(self.URI)
+            self.URI = URI + '/keypad'
+            
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     @property
@@ -454,7 +454,7 @@ class Keypad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setNone(self):
@@ -464,7 +464,7 @@ class Keypad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setCustomGrid(self, grid):
@@ -474,7 +474,7 @@ class Keypad:
                     self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
             return True
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def applyGrid(self):
@@ -491,7 +491,7 @@ class Keypad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
 
     def setPosition(self, x=0, y=0, color=None):
@@ -501,5 +501,5 @@ class Keypad:
             return True
 
         except:
-            print("Unexpected Error!")
+            print('Unexpected Error!')
             raise
