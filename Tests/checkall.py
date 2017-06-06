@@ -12,7 +12,7 @@ Info.Description = "Oh Rick, I don't know if that's a good idea."
 Info.Title = "Test"
 
 App = ChromaApp(Info)
-print("Setting all devices to blue")
+print("Setting Keyboard to green, Mouse to yellow and Mousepad to blue")
 print(App.Keyboard.setStatic(Colors.GREEN))
 print(App.Mousepad.setStatic(Colors.BLUE))
 print(App.Mouse.setStatic(Colors.YELLOW))
@@ -42,7 +42,7 @@ for i in range(0,len(MouseGrid)):
 print("Running keyboard-animation")
 for i in range(0,len(KeyboardGrid)):
     for j in range(0,len(KeyboardGrid[i])):
-        KeyboardGrid[i][j].set(red=255,green=255,blue=0)
+        KeyboardGrid[i][j].set(red=255, green=255, blue=0)
         App.Keyboard.setCustomGrid(KeyboardGrid)
         App.Keyboard.applyGrid()
         sleep(0.1)
@@ -55,11 +55,17 @@ for i in range(0,len(MousepadGrid)):
         sleep(0.1)
 sleep(2)
 
+
+
+
+
+
 print("Setting all devices to none")
 App.Keyboard.setNone()
 App.Mouse.setNone()
 App.Mousepad.setNone()
 
+print("If you reached this point, everything seems to be working :)")
 sleep(2)
 
 

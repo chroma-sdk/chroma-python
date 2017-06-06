@@ -32,7 +32,7 @@ class Heartbeat(object):
     def run(self):
         try:
             while self.go:
-                print(requests.put(self.URI + "/heartbeat").json());
+                requests.put(self.URI + "/heartbeat").json()
                 sleep(1)
         except:
             print("Unexpected Error!")
@@ -63,21 +63,21 @@ class ChromaColor:
     _blue = 0
     _green = 0
 
-    def __init__(self, red=None, green=None, blue=None, hex=None):
+    def __init__(self, red=None, green=None, blue=None, hexcolor=None):
         try:
-            self.set(red=red,green=green,blue=blue,hex=hex)
+            self.set(red=red,green=green,blue=blue,hexcolor=hexcolor)
 
         except:
             print("Unexpected Error!")
             raise
 
-    def set(self, red=None, green=None, blue=None, hex=None):
+    def set(self, red=None, green=None, blue=None, hexcolor=None):
         try:
-            if None in (red, blue, green) and hex is not None:
-                if hex[0] == "#":
-                    color = hex[1:]
-                elif hex[0] == "0" and hex[1] == "x":
-                    color = hex[2:]
+            if None in (red, blue, green) and hexcolor is not None:
+                if hexcolor[0] == "#":
+                    color = hexcolor[1:]
+                elif hexcolor[0] == "0" and hexcolor[1] == "x":
+                    color = hexcolor[2:]
                 else:
                     raise ValueError("Is not Hex-Value!")
                 tmp = int(color, 16)
@@ -85,7 +85,7 @@ class ChromaColor:
                 self._blue = tmp & 255
                 self._green = (tmp >> 8) & 255
                 self._red = (tmp >> 16) & 255
-            elif None not in (red, blue, green) and hex is None:
+            elif None not in (red, blue, green) and hexcolor is None:
                 if red not in range(0, 256):
                     raise ValueError("Red-value out of range!")
                 if green not in range(0, 256):

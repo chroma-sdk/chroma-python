@@ -1,4 +1,5 @@
 import requests
+
 from .ChromaDevices import Keyboard, Mouse, Mousepad, ChromaLink, Headset
 from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 
