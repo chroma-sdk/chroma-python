@@ -95,7 +95,7 @@ class ChromaColor:
                 self._blue = blue
                 self._red = red
                 self._green = green
-
+                return True
         except:
             print('Unexpected Error!')
             raise

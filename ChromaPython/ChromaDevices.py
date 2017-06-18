@@ -1,5 +1,7 @@
 from .ChromaDatatypes import ChromaColor, checkresult
 from .ChromaEnums import KeyboardKeys
+from .ChromaBinary import BinaryFile,ChromaAnimation
+from time import sleep
 import requests
 
 
@@ -420,6 +422,12 @@ class Keyboard:
         except:
             print('Unexpected Error!')
             raise
+
+    def playAnimation(self, animation=ChromaAnimation):
+        for i in range(0, len(animation.Frames)):
+            self.setCustomGrid(animation.Frames[i])
+            self.applyGrid()
+            sleep(1 / animation.FPS)
 
 
 class Keypad:
