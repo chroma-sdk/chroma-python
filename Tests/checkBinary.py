@@ -1,5 +1,5 @@
 from time import sleep
-from ChromaPython import ChromaApp,ChromaAppInfo, read_bca,generate_Keyboard_animation
+from ChromaPython import ChromaApp,ChromaAppInfo
 
 
 Info = ChromaAppInfo
@@ -19,8 +19,8 @@ print(App.Version())
 print('\n')
 
 print("Reading BCA")
-TestBcaFile = read_bca("Pacman.bca")
+TestBcaFile = App.BcaHandler.decode("Tetris.bca")
 print("Generating Animation")
-keyboardanimation = generate_Keyboard_animation(TestBcaFile)
+keyboardanimation = App.BcaHandler.generateKeyboardAnimation(TestBcaFile)
 print("Playing Animation")
 App.Keyboard.playAnimation(keyboardanimation)

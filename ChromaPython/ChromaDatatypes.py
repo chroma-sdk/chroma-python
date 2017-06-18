@@ -10,6 +10,7 @@ def checkresult(result):
         else:
             return False, result['result']
     except:
+        # TODO Add proper exception handling
         print('Unexpected Error!')
         raise
 
@@ -23,6 +24,7 @@ class Heartbeat(object):
             thread.daemon = True
             thread.start()
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -35,6 +37,7 @@ class Heartbeat(object):
                 requests.put(self.URI + '/heartbeat').json()
                 sleep(1)
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -54,6 +57,7 @@ class ChromaKey:
             self._Key = Key
             self._Color = Color
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -68,6 +72,7 @@ class ChromaColor:
             self.set(red=red,green=green,blue=blue,hexcolor=hexcolor)
 
         except:
+            # TODO Add proper exception handling
             print("Unexpected Error!")
             raise
 
@@ -97,6 +102,7 @@ class ChromaColor:
                 self._green = green
                 return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -104,6 +110,7 @@ class ChromaColor:
         try:
             return self._red, self._green, self._blue
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -111,6 +118,7 @@ class ChromaColor:
         try:
             return '%02x%02x%02x' % (self._blue, self._green, self._red)
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -118,5 +126,6 @@ class ChromaColor:
         try:
             return '%02x%02x%02x' % (self._red, self._green, self._blue)
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise

@@ -15,6 +15,7 @@ class Mousepad:
 
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -32,6 +33,7 @@ class Mousepad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -42,6 +44,7 @@ class Mousepad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -51,6 +54,7 @@ class Mousepad:
                 self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -68,6 +72,7 @@ class Mousepad:
             return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -78,6 +83,7 @@ class Mousepad:
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -92,6 +98,7 @@ class Headset:
 
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -109,6 +116,7 @@ class Headset:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -119,6 +127,7 @@ class Headset:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -128,6 +137,7 @@ class Headset:
                 self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -145,6 +155,7 @@ class Headset:
             return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -155,6 +166,7 @@ class Headset:
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -169,6 +181,7 @@ class ChromaLink:
 
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -186,6 +199,7 @@ class ChromaLink:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -196,6 +210,7 @@ class ChromaLink:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -205,6 +220,7 @@ class ChromaLink:
                 self._ColorGrid[x].set(red=grid[x]._red, green=grid[x]._green, blue=grid[x]._blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -222,6 +238,7 @@ class ChromaLink:
             return checkresult(requests.put(url=self.URI, json=data).json())
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -232,6 +249,7 @@ class ChromaLink:
             self._ColorGrid[x].set(red=red, green=green, blue=blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -246,6 +264,7 @@ class Mouse:
             self.URI = uri + '/mouse'
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -267,6 +286,7 @@ class Mouse:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -277,6 +297,7 @@ class Mouse:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -287,6 +308,7 @@ class Mouse:
                     self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -304,6 +326,7 @@ class Mouse:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -315,6 +338,7 @@ class Mouse:
             return True
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -330,6 +354,7 @@ class Keyboard:
             self.URI = URI + '/keyboard'
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -351,6 +376,7 @@ class Keyboard:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -361,6 +387,7 @@ class Keyboard:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -371,6 +398,7 @@ class Keyboard:
                     self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -388,6 +416,7 @@ class Keyboard:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -399,6 +428,7 @@ class Keyboard:
             return True
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -420,6 +450,7 @@ class Keyboard:
                 self._ColorGrid[row][col].set(red=red, green=green, blue=blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -441,6 +472,7 @@ class Keypad:
             self.URI = URI + '/keypad'
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -462,6 +494,7 @@ class Keypad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -472,6 +505,7 @@ class Keypad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -482,6 +516,7 @@ class Keypad:
                     self._ColorGrid[i][j].set(red=grid[i][j]._red, green=grid[i][j]._green, blue=grid[i][j]._blue)
             return True
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -499,6 +534,7 @@ class Keypad:
             }
             return checkresult(requests.put(url=self.URI, json=data).json())
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
@@ -509,5 +545,6 @@ class Keypad:
             return True
 
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise

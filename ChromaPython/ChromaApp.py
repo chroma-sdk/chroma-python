@@ -1,5 +1,5 @@
 import requests
-
+from .ChromaBinary import ChromaBcaHandler
 from .ChromaDevices import Keyboard, Mouse, Mousepad, ChromaLink, Headset
 from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 
@@ -28,14 +28,17 @@ class ChromaApp:
             self.Mousepad = Mousepad(self.URI)
             self.Headset = Headset(self.URI)
             self.ChromaLink = ChromaLink(self.URI)
+            self.BcaHandler = ChromaBcaHandler()
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def Version(self):
         try:
-            print(requests.get(url='http://localhost:54235/razer/chromasdk').json()['version'])
+            return requests.get(url='http://localhost:54235/razer/chromasdk').json()['version']
         except:
+            # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
