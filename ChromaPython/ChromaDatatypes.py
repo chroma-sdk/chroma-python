@@ -43,6 +43,10 @@ class Heartbeat(object):
 
 
 class ChromaAppInfo:
+    def __init__(self):
+        # TODO add proper init-function
+        pass
+
     Title = ""
     Description = ""
     DeveloperName = ""
@@ -51,15 +55,7 @@ class ChromaAppInfo:
     Category = ""
 
 
-class ChromaKey:
-    def __init__(self, Key, Color):
-        try:
-            self._Key = Key
-            self._Color = Color
-        except:
-            # TODO Add proper exception handling
-            print('Unexpected Error!')
-            raise
+
 
 
 class ChromaColor:
@@ -125,6 +121,16 @@ class ChromaColor:
     def getHexRGB(self):
         try:
             return '%02x%02x%02x' % (self._red, self._green, self._blue)
+        except:
+            # TODO Add proper exception handling
+            print('Unexpected Error!')
+            raise
+
+class ChromaKey:
+    def __init__(self, Key, Color=ChromaColor):
+        try:
+            self._Key = Key
+            self._Color = Color
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')

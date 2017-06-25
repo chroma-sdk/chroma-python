@@ -3,6 +3,7 @@ from enum import Enum
 from .ChromaDatatypes import ChromaColor
 
 class ChromaAnimation:
+
     def __init__(self):
         self.FPS = 0
         self.Frames = []

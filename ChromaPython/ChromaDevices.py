@@ -1,6 +1,6 @@
 from .ChromaDatatypes import ChromaColor, checkresult
 from .ChromaEnums import KeyboardKeys
-from .ChromaBinary import BinaryFile,ChromaAnimation
+from .ChromaBinary import ChromaAnimation
 from time import sleep
 import requests
 
@@ -159,7 +159,7 @@ class Headset:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, color=None):
+    def setPosition(self, x=0, color=ChromaColor):
         try:
 
             red, green, blue = color.getRGB()
@@ -242,7 +242,7 @@ class ChromaLink:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, color=None):
+    def setPosition(self, x=0, color=ChromaColor):
         try:
 
             red, green, blue = color.getRGB()
@@ -330,7 +330,7 @@ class Mouse:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, y=0, color=None):
+    def setPosition(self, x=0, y=0, color=ChromaColor):
         try:
 
             red, green, blue = color.getRGB()
@@ -420,7 +420,7 @@ class Keyboard:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, y=0, color=None):
+    def setPosition(self, x=0, y=0, color=ChromaColor):
         try:
 
             red, green, blue = color.getRGB()
@@ -538,7 +538,7 @@ class Keypad:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, y=0, color=None):
+    def setPosition(self, x=0, y=0, color=ChromaColor):
         try:
             red, green, blue = color.getRGB()
             self._ColorGrid[y][x].set(red=red, green=green, blue=blue)

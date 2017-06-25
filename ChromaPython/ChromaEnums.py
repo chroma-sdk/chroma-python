@@ -18,6 +18,7 @@ class Colors:
     PURPLE = ChromaColor(red=128, green=0, blue=128)
     TEAL = ChromaColor(red=0, green=128, blue=128)
     NAVY = ChromaColor(red=0, green=0, blue=128)
+    # TODO add more colors
     """See http://www.rapidtables.com/web/color/RGB_Color.htm for reference"""
 
 

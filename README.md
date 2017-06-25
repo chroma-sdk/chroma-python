@@ -1,7 +1,7 @@
 # ChromaPython
 
 
-[![Build status](https://ci.appveyor.com/api/projects/status/w308efi8uqo0lvcr?svg=true)](https://ci.appveyor.com/project/Vaypron/chroma-python)
+[![Build status](https://ci.appveyor.com/api/projects/status/5ihmbuppv3g29or2/branch/master?svg=true)](https://ci.appveyor.com/project/Vaypron/chroma-python-ee89l/branch/master)
 
 
 ## How to install
