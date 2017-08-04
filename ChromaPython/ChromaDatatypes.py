@@ -55,9 +55,6 @@ class ChromaAppInfo:
     Category = ""
 
 
-
-
-
 class ChromaColor:
     _red = 0
     _blue = 0
@@ -65,7 +62,7 @@ class ChromaColor:
 
     def __init__(self, red=None, green=None, blue=None, hexcolor=None):
         try:
-            self.set(red=red,green=green,blue=blue,hexcolor=hexcolor)
+            self.set(red=red, green=green, blue=blue, hexcolor=hexcolor)
 
         except:
             # TODO Add proper exception handling
@@ -125,6 +122,7 @@ class ChromaColor:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
+
 
 class ChromaKey:
     def __init__(self, Key, Color=ChromaColor):

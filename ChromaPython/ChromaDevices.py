@@ -1,8 +1,9 @@
+import requests
+
 from .ChromaDatatypes import ChromaColor, checkresult
 from .ChromaEnums import KeyboardKeys
 from .ChromaBinary import ChromaAnimation
 from time import sleep
-import requests
 
 
 class Mousepad:

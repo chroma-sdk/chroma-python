@@ -4,7 +4,6 @@ from .ChromaDevices import Keyboard, Mouse, Mousepad, ChromaLink, Headset
 from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 
 
-
 class ChromaApp:
     def __init__(self, Info=ChromaAppInfo):
         try:
@@ -45,5 +44,3 @@ class ChromaApp:
     def __del__(self):
         print('Im dying')
         self.heartbeat.stop()
-
-

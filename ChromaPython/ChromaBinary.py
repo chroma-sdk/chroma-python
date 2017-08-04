@@ -2,11 +2,12 @@ import struct
 from enum import Enum
 from .ChromaDatatypes import ChromaColor
 
-class ChromaAnimation:
 
+class ChromaAnimation:
     def __init__(self):
         self.FPS = 0
         self.Frames = []
+
 
 class BinaryFile:
 
@@ -47,7 +48,6 @@ class BinaryFile:
             self.dABGR = 0
 
     class DeviceType(Enum):
-
         none = 0x0
         Keyboard = 0x1
         Keypad = 0x2
@@ -59,10 +59,15 @@ class BinaryFile:
         AssignAll = 0
         AssignNamed = 1
 
+    FrameList = None
+    BHeader = None
+    FHeader = None
+
     def __init__(self):
         self.BHeader = self.BcaHeader()
         self.FHeader = self.FileHeader()
         self.FrameList = []
+
 
 
 class BinaryDevice:
@@ -73,98 +78,99 @@ class BinaryDevice:
 
 class BinaryFrame:
     def __init__(self):
-
         self.FrameHeader = BinaryFile.FrameHeader()
         self.DeviceList = []
 
 
-
-
 class ChromaBcaHandler:
-
     def decode(self, filename):
         try:
             with open(filename, "rb") as f:
-                file = BinaryFile()
+                binary_file = BinaryFile()
 
                 """Reading FileHeader"""
-                file.FHeader.ftype = struct.unpack("<H", f.read(2))[0]
-                file.FHeader.fsize = struct.unpack("<L", f.read(4))[0]
-                file.FHeader.fReserved = struct.unpack("<L", f.read(4))[0]
-                file.FHeader.fBcaOffset = struct.unpack("<L", f.read(4))[0]
+                binary_file.FHeader.ftype = struct.unpack("<H", f.read(2))[0]
+                binary_file.FHeader.fsize = struct.unpack("<L", f.read(4))[0]
+                binary_file.FHeader.fReserved = struct.unpack("<L", f.read(4))[0]
+                binary_file.FHeader.fBcaOffset = struct.unpack("<L", f.read(4))[0]
                 """Reading BCAHeader"""
-                file.BHeader.hSize = struct.unpack("<L", f.read(4))[0]
-                file.BHeader.hVersion = struct.unpack("<H", f.read(2))[0]
-                file.BHeader.hFrameOffset = struct.unpack("<L", f.read(4))[0]
-                file.BHeader.hFPS = struct.unpack("<H", f.read(2))[0]
-                file.BHeader.hFrameCount = struct.unpack("<L", f.read(4))[0]
-                file.BHeader.hReserved = struct.unpack("<H", f.read(2))[0]
+                binary_file.BHeader.hSize = struct.unpack("<L", f.read(4))[0]
+                binary_file.BHeader.hVersion = struct.unpack("<H", f.read(2))[0]
+                binary_file.BHeader.hFrameOffset = struct.unpack("<L", f.read(4))[0]
+                binary_file.BHeader.hFPS = struct.unpack("<H", f.read(2))[0]
+                binary_file.BHeader.hFrameCount = struct.unpack("<L", f.read(4))[0]
+                binary_file.BHeader.hReserved = struct.unpack("<H", f.read(2))[0]
 
                 """Reading Frame"""
 
-                for h in range(0, int(file.BHeader.hFrameCount)):
-
-                    file.FrameList.append(BinaryFrame())
-                for i in range(0, int(file.BHeader.hFrameCount)):
+                for h in range(0, int(binary_file.BHeader.hFrameCount)):
+                    binary_file.FrameList.append(BinaryFrame())
+                for i in range(0, int(binary_file.BHeader.hFrameCount)):
                     """Reading FrameHeader"""
-                    file.FrameList[i].FrameHeader.fhSize = struct.unpack("<H", f.read(2))[0]
+                    binary_file.FrameList[i].FrameHeader.fhSize = struct.unpack("<H", f.read(2))[0]
 
-                    file.FrameList[i].FrameHeader.fhDeviceCount = struct.unpack("<H", f.read(2))[0]
-                    for j in range(0, file.FrameList[i].FrameHeader.fhDeviceCount):
-                        file.FrameList[i].DeviceList.append(BinaryDevice())
+                    binary_file.FrameList[i].FrameHeader.fhDeviceCount = struct.unpack("<H", f.read(2))[0]
+                    for j in range(0, binary_file.FrameList[i].FrameHeader.fhDeviceCount):
+                        binary_file.FrameList[i].DeviceList.append(BinaryDevice())
 
-                    file.FrameList[i].FrameHeader.fhDataSize = struct.unpack("<H", f.read(2))[0]
+                    binary_file.FrameList[i].FrameHeader.fhDataSize = struct.unpack("<H", f.read(2))[0]
                     """Reading Frame Data"""
 
-                    for j in range(0, len(file.FrameList[i].DeviceList)):
-                        file.FrameList[i].DeviceList[j].DeviceHeader.dhSize = struct.unpack("<B", f.read(1))[0]
+                    for j in range(0, len(binary_file.FrameList[i].DeviceList)):
+                        binary_file.FrameList[i].DeviceList[j].DeviceHeader.dhSize = struct.unpack("<B",
+                                                                                                   f.read(1))[0]
 
-                        file.FrameList[i].DeviceList[j].DeviceHeader.dhDatatype = struct.unpack("<B", f.read(1))[0]
+                        binary_file.FrameList[i].DeviceList[j].DeviceHeader.dhDatatype = struct.unpack("<B",
+                                                                                                       f.read(1))[0]
 
-                        file.FrameList[i].DeviceList[j].DeviceHeader.dhDevice = struct.unpack("<H", f.read(2))[0]
+                        binary_file.FrameList[i].DeviceList[j].DeviceHeader.dhDevice = struct.unpack("<H",
+                                                                                                     f.read(2))[0]
 
-                        file.FrameList[i].DeviceList[j].DeviceHeader.dhDataSize = struct.unpack("<H", f.read(2))[0]
+                        binary_file.FrameList[i].DeviceList[j].DeviceHeader.dhDataSize = struct.unpack("<H",
+                                                                                                       f.read(2))[0]
 
-                        dataCount = int(file.FrameList[i].DeviceList[j].DeviceHeader.dhDataSize / 6)
+                        dataCount = int(binary_file.FrameList[i].DeviceList[j].DeviceHeader.dhDataSize / 6)
                         for k in range(0, dataCount):
-                            file.FrameList[i].DeviceList[j].DeviceDataList.append(BinaryFile.DeviceData())
+                            binary_file.FrameList[i].DeviceList[j].DeviceDataList.append(BinaryFile.DeviceData())
                         """Reading Device Data"""
-                        for k in range(0, len(file.FrameList[i].DeviceList[j].DeviceDataList)):
-                            file.FrameList[i].DeviceList[j].DeviceDataList[k].dRow = struct.unpack("<B", f.read(1))[0]
-                            file.FrameList[i].DeviceList[j].DeviceDataList[k].dCol = struct.unpack("<B", f.read(1))[0]
-                            file.FrameList[i].DeviceList[j].DeviceDataList[k].dABGR = struct.unpack("<L", f.read(4))[0]
-                return file
+                        for k in range(0, len(binary_file.FrameList[i].DeviceList[j].DeviceDataList)):
+                            binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dRow = struct.unpack("<B",
+                                                                                                          f.read(1))[0]
+                            binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dCol = struct.unpack("<B",
+                                                                                                          f.read(1))[0]
+                            binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dABGR = struct.unpack("<L",
+                                                                                                           f.read(4))[0]
+                return binary_file
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
-
     def encode(self):
         # TODO implement a method to write Bca to file
         pass
 
-
-    def generateKeyboardAnimation(self, file=BinaryFile):
+    def generateKeyboardAnimation(self, binary_file=BinaryFile):
         try:
             animation = ChromaAnimation()
-            animation.FPS = file.BHeader.hFPS
-            for i in range(0, len(file.FrameList)):
-                for j in range(0, len(file.FrameList[i].DeviceList)):
+            animation.FPS = binary_file.BHeader.hFPS
+            for i in range(0, len(binary_file.FrameList)):
+                for j in range(0, len(binary_file.FrameList[i].DeviceList)):
                     temp = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
-                    if(i > 0):
-                        for row in range(0,len(animation.Frames[i-1])):
-                            for col in range(0,len(animation.Frames[i-1][row])):
-                                red, green, blue = animation.Frames[i-1][row][col].getRGB()
-                                temp[row][col].set(red=red,blue=blue,green=green)
-                    if(file.FrameList[i].DeviceList[j].DeviceHeader.dhDevice == 1):
-                        for k in range(0, len(file.FrameList[i].DeviceList[j].DeviceDataList)):
-                            color = file.FrameList[i].DeviceList[j].DeviceDataList[k].dABGR
+                    if (i > 0):
+                        for row in range(0, len(animation.Frames[i - 1])):
+                            for col in range(0, len(animation.Frames[i - 1][row])):
+                                red, green, blue = animation.Frames[i - 1][row][col].getRGB()
+                                temp[row][col].set(red=red, blue=blue, green=green)
+                    if (binary_file.FrameList[i].DeviceList[j].DeviceHeader.dhDevice == 1):
+                        for k in range(0, len(binary_file.FrameList[i].DeviceList[j].DeviceDataList)):
+                            color = binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dABGR
                             red = (color >> 0) & 255
                             green = (color >> 8) & 255
                             blue = (color >> 16) & 255
-                            temp[file.FrameList[i].DeviceList[j].DeviceDataList[k].dRow][
-                                file.FrameList[i].DeviceList[j].DeviceDataList[k].dCol].set(red=red,green=green,blue=blue)
+                            temp[binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dRow][
+                                binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dCol].set(red=red, green=green,
+                                                                                            blue=blue)
                         animation.Frames.append(temp)
             return animation
         except:
@@ -172,23 +178,18 @@ class ChromaBcaHandler:
             print('Unexpected Error!')
             raise
 
-    def generateKeypadAnimation(self, file=BinaryFile):
+    def generateKeypadAnimation(self, binary_file=BinaryFile):
         # TODO implement a method to extract the Keypad animation from BinaryFile
         pass
 
-    def generateMouseAnimation(self, file=BinaryFile):
+    def generateMouseAnimation(self, binary_file=BinaryFile):
         # TODO implement a method to extract the Mouse animation from BinaryFile
         pass
 
-    def generateMousepadAnimation(self, file=BinaryFile):
+    def generateMousepadAnimation(self, binary_file=BinaryFile):
         # TODO implement a method to extract the Mousepad animation from BinaryFile
         pass
 
-    def generateHeadsetAnimation(self, file=BinaryFile):
+    def generateHeadsetAnimation(self, binary_file=BinaryFile):
         # TODO implement a method to extract the Headset animation from BinaryFile
         pass
-
-
-
-
-
