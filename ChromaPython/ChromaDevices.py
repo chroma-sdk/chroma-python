@@ -10,7 +10,7 @@ class Mousepad:
     _MaxLED = 15
     _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(15)]
 
-    def __init__(self, uri=str):
+    def __init__(self, uri: str):
         try:
             self.URI = uri + '/mousepad'
 
@@ -24,7 +24,7 @@ class Mousepad:
     def MaxLED(self):
         return self._MaxLED
 
-    def setStatic(self, color=ChromaColor):
+    def setStatic(self, color: ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -77,7 +77,7 @@ class Mousepad:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, color=None):
+    def setPosition(self, color: ChromaColor, x=0):
         try:
 
             red, green, blue = color.getRGB()
@@ -92,8 +92,8 @@ class Mousepad:
 class Headset:
     _MaxLED = 2
     _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(2)]
+    def __init__(self, uri: str):
 
-    def __init__(self, uri=str):
         try:
             self.URI = uri + '/headset'
 
@@ -107,7 +107,7 @@ class Headset:
     def MaxLED(self):
         return self._MaxLED
 
-    def setStatic(self, color=ChromaColor):
+    def setStatic(self, color: ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -160,7 +160,7 @@ class Headset:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, color=ChromaColor):
+    def setPosition(self, color: ChromaColor, x=0):
         try:
 
             red, green, blue = color.getRGB()
@@ -175,8 +175,8 @@ class Headset:
 class ChromaLink:
     _MaxLED = 5
     _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(5)]
+    def __init__(self, uri: str):
 
-    def __init__(self, uri=str):
         try:
             self.URI = uri + '/chromalink'
 
@@ -190,7 +190,7 @@ class ChromaLink:
     def MaxLED(self):
         return self._MaxLED
 
-    def setStatic(self, color=ChromaColor):
+    def setStatic(self, color: ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -243,7 +243,7 @@ class ChromaLink:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, color=ChromaColor):
+    def setPosition(self, color: ChromaColor, x=0):
         try:
 
             red, green, blue = color.getRGB()
@@ -259,8 +259,8 @@ class Mouse:
     _MaxRow = 9
     _MaxColumn = 7
     _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(7)] for y in range(9)]
+    def __init__(self, uri: str):
 
-    def __init__(self, uri=str):
         try:
             self.URI = uri + '/mouse'
 
@@ -277,7 +277,7 @@ class Mouse:
     def MaxColumn(self):
         return self._MaxColumn
 
-    def setStatic(self, color=ChromaColor):
+    def setStatic(self, color: ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -331,7 +331,7 @@ class Mouse:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, y=0, color=ChromaColor):
+    def setPosition(self, color: ChromaColor, x=0, y=0):
         try:
 
             red, green, blue = color.getRGB()
@@ -349,8 +349,8 @@ class Keyboard:
     _MaxColumn = 22
     _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
     _Keys = KeyboardKeys()
+    def __init__(self, uri: str):
 
-    def __init__(self, URI=str):
         try:
             self.URI = URI + '/keyboard'
 
@@ -367,7 +367,7 @@ class Keyboard:
     def MaxColumn(self):
         return self._MaxColumn
 
-    def setStatic(self, color=ChromaColor):
+    def setStatic(self, color: ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -421,7 +421,7 @@ class Keyboard:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, y=0, color=ChromaColor):
+    def setPosition(self, color: ChromaColor, x=0, y=0):
         try:
 
             red, green, blue = color.getRGB()
@@ -455,7 +455,7 @@ class Keyboard:
             print('Unexpected Error!')
             raise
 
-    def playAnimation(self, animation=ChromaAnimation):
+    def playAnimation(self, animation: ChromaAnimation):
         for i in range(0, len(animation.Frames)):
             self.setCustomGrid(animation.Frames[i])
             self.applyGrid()
@@ -467,8 +467,8 @@ class Keypad:
     _MaxColumn = 5
     _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
     _Keys = KeyboardKeys()
+    def __init__(self, uri: str):
 
-    def __init__(self, URI=str):
         try:
             self.URI = URI + '/keypad'
 
@@ -485,7 +485,7 @@ class Keypad:
     def MaxColumn(self):
         return self._MaxColumn
 
-    def setStatic(self, color=ChromaColor):
+    def setStatic(self, color: ChromaColor):
         try:
             data = {
                 "effect": "CHROMA_STATIC",
@@ -539,7 +539,7 @@ class Keypad:
             print('Unexpected Error!')
             raise
 
-    def setPosition(self, x=0, y=0, color=ChromaColor):
+    def setPosition(self, color: ChromaColor, x=0, y=0):
         try:
             red, green, blue = color.getRGB()
             self._ColorGrid[y][x].set(red=red, green=green, blue=blue)

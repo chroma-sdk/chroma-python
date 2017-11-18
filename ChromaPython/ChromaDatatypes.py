@@ -16,7 +16,7 @@ def checkresult(result):
 
 
 class Heartbeat(object):
-    def __init__(self, URI=str):
+    def __init__(self, URI: str):
         try:
             self.URI = URI
             self.go = True
@@ -125,7 +125,7 @@ class ChromaColor:
 
 
 class ChromaKey:
-    def __init__(self, Key, Color=ChromaColor):
+    def __init__(self, Key, Color: ChromaColor):
         try:
             self._Key = Key
             self._Color = Color

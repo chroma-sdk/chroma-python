@@ -5,7 +5,7 @@ from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 
 
 class ChromaApp:
-    def __init__(self, Info=ChromaAppInfo):
+    def __init__(self, Info: ChromaAppInfo):
         try:
             url = 'http://localhost:54235/razer/chromasdk'
 

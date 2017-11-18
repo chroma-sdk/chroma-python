@@ -83,7 +83,7 @@ class BinaryFrame:
 
 
 class ChromaBcaHandler:
-    def decode(self, filename):
+    def decode(self, filename: str):
         try:
             with open(filename, "rb") as f:
                 binary_file = BinaryFile()
@@ -150,7 +150,7 @@ class ChromaBcaHandler:
         # TODO implement a method to write Bca to file
         pass
 
-    def generateKeyboardAnimation(self, binary_file=BinaryFile):
+    def generateKeyboardAnimation(self, binary_file: BinaryFile):
         try:
             animation = ChromaAnimation()
             animation.FPS = binary_file.BHeader.hFPS
