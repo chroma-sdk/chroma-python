@@ -7,13 +7,11 @@ from time import sleep
 
 
 class Mousepad:
-    _MaxLED = 15
-    _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(15)]
-
     def __init__(self, uri: str):
+        self._MaxLED = 15
+        self._ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(15)]
         try:
-            self.URI = uri + '/mousepad'
-
+            self._URI = uri + '/mousepad'
 
         except:
             # TODO Add proper exception handling
@@ -32,18 +30,19 @@ class Mousepad:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def setNone(self):
+
+        data = {
+            "effect": "CHROMA_NONE"
+        }
         try:
-            data = {
-                "effect": "CHROMA_NONE"
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -60,17 +59,18 @@ class Mousepad:
             raise
 
     def applyGrid(self):
+
+        tmp = [0 for x in range(15)]
+
+        for x in range(0, len(self._ColorGrid)):
+            tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
+
+        data = {
+            "effect": "CHROMA_CUSTOM",
+            "param": tmp
+        }
         try:
-            Tmp = [0 for x in range(15)]
-
-            for x in range(0, len(self._ColorGrid)):
-                Tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
-
-            data = {
-                "effect": "CHROMA_CUSTOM",
-                "param": Tmp
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
 
         except:
             # TODO Add proper exception handling
@@ -90,14 +90,12 @@ class Mousepad:
 
 
 class Headset:
-    _MaxLED = 2
-    _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(2)]
     def __init__(self, uri: str):
 
+        self._MaxLED = 2
+        self._ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(2)]
         try:
-            self.URI = uri + '/headset'
-
-
+            self._URI = uri + '/headset'
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -115,18 +113,18 @@ class Headset:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def setNone(self):
-        try:
-            data = {
-                "effect": "CHROMA_NONE"
+        data = {
+            "effect": "CHROMA_NONE"
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+        try:
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -143,17 +141,18 @@ class Headset:
             raise
 
     def applyGrid(self):
+
+        tmp = [0 for x in range(2)]
+
+        for x in range(0, len(self._ColorGrid)):
+            tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
+
+        data = {
+            "effect": "CHROMA_CUSTOM",
+            "param": tmp
+        }
         try:
-            Tmp = [0 for x in range(2)]
-
-            for x in range(0, len(self._ColorGrid)):
-                Tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
-
-            data = {
-                "effect": "CHROMA_CUSTOM",
-                "param": Tmp
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
 
         except:
             # TODO Add proper exception handling
@@ -173,12 +172,12 @@ class Headset:
 
 
 class ChromaLink:
-    _MaxLED = 5
-    _ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(5)]
     def __init__(self, uri: str):
+        self._MaxLED = 5
+        self._ColorGrid = [ChromaColor(red=0, green=0, blue=0) for x in range(5)]
 
         try:
-            self.URI = uri + '/chromalink'
+            self._URI = uri + '/chromalink'
 
 
         except:
@@ -198,18 +197,19 @@ class ChromaLink:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def setNone(self):
+
+        data = {
+            "effect": "CHROMA_NONE"
+        }
         try:
-            data = {
-                "effect": "CHROMA_NONE"
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -226,17 +226,18 @@ class ChromaLink:
             raise
 
     def applyGrid(self):
+
+        tmp = [0 for x in range(5)]
+
+        for x in range(0, len(self._ColorGrid)):
+            tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
+
+        data = {
+            "effect": "CHROMA_CUSTOM",
+            "param": tmp
+        }
         try:
-            Tmp = [0 for x in range(5)]
-
-            for x in range(0, len(self._ColorGrid)):
-                Tmp[x] = int(self._ColorGrid[x].getHexBGR(), 16)
-
-            data = {
-                "effect": "CHROMA_CUSTOM",
-                "param": Tmp
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
 
         except:
             # TODO Add proper exception handling
@@ -256,13 +257,13 @@ class ChromaLink:
 
 
 class Mouse:
-    _MaxRow = 9
-    _MaxColumn = 7
-    _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(7)] for y in range(9)]
     def __init__(self, uri: str):
+        self._MaxRow = 9
+        self._MaxColumn = 7
+        self._ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(7)] for y in range(9)]
 
         try:
-            self.URI = uri + '/mouse'
+            self._URI = uri + '/mouse'
 
         except:
             # TODO Add proper exception handling
@@ -285,18 +286,19 @@ class Mouse:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def setNone(self):
+
+        data = {
+            "effect": "CHROMA_NONE"
+        }
         try:
-            data = {
-                "effect": "CHROMA_NONE"
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -314,18 +316,19 @@ class Mouse:
             raise
 
     def applyGrid(self):
+
+        tmp = [[0 for x in range(7)] for y in range(9)]
+
+        for i in range(0, len(self._ColorGrid)):
+            for j in range(0, len(self._ColorGrid[i])):
+                tmp[i][j] = int(self._ColorGrid[i][j].getHexBGR(), 16)
+
+        data = {
+            "effect": "CHROMA_CUSTOM2",
+            "param": [tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8]]
+        }
         try:
-            Tmp = [[0 for x in range(7)] for y in range(9)]
-
-            for i in range(0, len(self._ColorGrid)):
-                for j in range(0, len(self._ColorGrid[i])):
-                    Tmp[i][j] = int(self._ColorGrid[i][j].getHexBGR(), 16)
-
-            data = {
-                "effect": "CHROMA_CUSTOM2",
-                "param": [Tmp[0], Tmp[1], Tmp[2], Tmp[3], Tmp[4], Tmp[5], Tmp[6], Tmp[7], Tmp[8]]
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -345,14 +348,14 @@ class Mouse:
 
 
 class Keyboard:
-    _MaxRow = 6
-    _MaxColumn = 22
-    _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
-    _Keys = KeyboardKeys()
     def __init__(self, uri: str):
+        self._MaxRow = 6
+        self._MaxColumn = 22
+        self._ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
+        self._Keys = KeyboardKeys()
 
         try:
-            self.URI = URI + '/keyboard'
+            self._URI = uri + '/keyboard'
 
         except:
             # TODO Add proper exception handling
@@ -375,18 +378,19 @@ class Keyboard:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def setNone(self):
+
+        data = {
+            "effect": "CHROMA_NONE"
+        }
         try:
-            data = {
-                "effect": "CHROMA_NONE"
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -404,18 +408,19 @@ class Keyboard:
             raise
 
     def applyGrid(self):
+
+        tmp = [[0 for x in range(22)] for y in range(6)]
+
+        for i in range(0, len(self._ColorGrid)):
+            for j in range(0, len(self._ColorGrid[i])):
+                tmp[i][j] = int(self._ColorGrid[i][j].getHexBGR(), 16)
+
+        data = {
+            "effect": "CHROMA_CUSTOM",
+            "param": [tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]]
+        }
         try:
-            Tmp = [[0 for x in range(22)] for y in range(6)]
-
-            for i in range(0, len(self._ColorGrid)):
-                for j in range(0, len(self._ColorGrid[i])):
-                    Tmp[i][j] = int(self._ColorGrid[i][j].getHexBGR(), 16)
-
-            data = {
-                "effect": "CHROMA_CUSTOM",
-                "param": [Tmp[0], Tmp[1], Tmp[2], Tmp[3], Tmp[4], Tmp[5]]
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -463,14 +468,14 @@ class Keyboard:
 
 
 class Keypad:
-    _MaxRow = 4
-    _MaxColumn = 5
-    _ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
-    _Keys = KeyboardKeys()
     def __init__(self, uri: str):
+        self._MaxRow = 4
+        self._MaxColumn = 5
+        self._ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
+        self._Keys = KeyboardKeys()
 
         try:
-            self.URI = URI + '/keypad'
+            self._URI = uri + '/keypad'
 
         except:
             # TODO Add proper exception handling
@@ -493,18 +498,20 @@ class Keypad:
                     "color": int(color.getHexBGR(), 16)
                 }
             }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
 
     def setNone(self):
+
+        data = {
+            "effect": "CHROMA_NONE"
+        }
+
         try:
-            data = {
-                "effect": "CHROMA_NONE"
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
@@ -522,18 +529,18 @@ class Keypad:
             raise
 
     def applyGrid(self):
+        tmp = [[0 for x in range(22)] for y in range(6)]
+
+        for i in range(0, len(self._ColorGrid)):
+            for j in range(0, len(self._ColorGrid[i])):
+                tmp[i][j] = int(self._ColorGrid[i][j].getHexBGR(), 16)
+
+        data = {
+            "effect": "CHROMA_CUSTOM",
+            "param": [tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]]
+        }
         try:
-            Tmp = [[0 for x in range(22)] for y in range(6)]
-
-            for i in range(0, len(self._ColorGrid)):
-                for j in range(0, len(self._ColorGrid[i])):
-                    Tmp[i][j] = int(self._ColorGrid[i][j].getHexBGR(), 16)
-
-            data = {
-                "effect": "CHROMA_CUSTOM",
-                "param": [Tmp[0], Tmp[1], Tmp[2], Tmp[3], Tmp[4], Tmp[5]]
-            }
-            return checkresult(requests.put(url=self.URI, json=data).json())
+            return checkresult(requests.put(url=self._URI, json=data).json())
         except:
             # TODO Add proper exception handling
             print('Unexpected Error!')
