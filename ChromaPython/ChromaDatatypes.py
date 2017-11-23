@@ -84,11 +84,11 @@ class ChromaColor:
                 self._green = (tmp >> 8) & 255
                 self._red = (tmp >> 16) & 255
             elif None not in (red, blue, green) and hexcolor is None:
-                if red not in range(0, 256):
+                if not 0 <= red <= 255:
                     raise ValueError('Red-value out of range!')
-                if green not in range(0, 256):
+                if not 0 <= green <= 255:
                     raise ValueError('Green-value out of range!')
-                if blue not in range(0, 256):
+                if not 0 <= blue <= 255:
                     raise ValueError('Blue-value out of range!')
                 self._blue = blue
                 self._red = red
