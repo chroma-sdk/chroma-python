@@ -71,7 +71,7 @@ class ChromaColor:
 
     def set(self, red=None, green=None, blue=None, hexcolor=None):
         try:
-            if None in (red, blue, green) and hexcolor is not None:
+            if hexcolor is not None:
                 if hexcolor[0] == '#':
                     color = hexcolor[1:]
                 elif hexcolor[0] == '0' and hexcolor[1] == 'x':
@@ -83,16 +83,16 @@ class ChromaColor:
                 self._blue = tmp & 255
                 self._green = (tmp >> 8) & 255
                 self._red = (tmp >> 16) & 255
-            elif None not in (red, blue, green) and hexcolor is None:
+            elif None not in (red, blue, green):
                 if not 0 <= red <= 255:
                     raise ValueError('Red-value out of range!')
                 if not 0 <= green <= 255:
                     raise ValueError('Green-value out of range!')
                 if not 0 <= blue <= 255:
                     raise ValueError('Blue-value out of range!')
-                self._blue = blue
-                self._red = red
-                self._green = green
+                self._red = int(red)
+                self._green = int(green)
+                self._blue = int(blue)
                 return True
         except:
             # TODO Add proper exception handling
