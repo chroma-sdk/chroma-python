@@ -1,7 +1,7 @@
 from time import sleep
 from ChromaPython import ChromaApp, ChromaAppInfo
 
-Info = ChromaAppInfo
+Info = ChromaAppInfo()
 Info.DeveloperName = 'Rick Sanchez'
 Info.DeveloperContact = 'Wubba-lubba@dub-dub.com'
 Info.Category = 'application'

@@ -131,6 +131,18 @@ class ChromaGrid:
     def __init__(self, type: str):
         self._types = {'Keyboard': [22, 6], 'Mouse': [7, 9], 'Mousepad': [15], 'ChromaLink': [5], 'Keypad': [4, 5],
                        'Headset': [2]}
+        try:
+            self.rearrange(type=type)
+        except:
+            raise
+
+    def __getitem__(self, item):
+        return self._grid[item]
+
+    def __len__(self):
+        return len(self._grid)
+
+    def rearrange(self, type: str):
         if not type in self._types:
             print('Unexpected Error!')
             raise
@@ -141,12 +153,6 @@ class ChromaGrid:
         else:
             self._grid = [[ChromaColor(red=0, blue=0, green=0) for x in range(self._type[0])] for y in
                           range(self._type[1])]
-
-    def __getitem__(self, item):
-        return self._grid[item]
-
-    def __len__(self):
-        return len(self._grid)
 
     def clear(self):
 
@@ -159,7 +165,7 @@ class ChromaGrid:
                     x.set(red=0, blue=0, green=0)
 
     def set(self, red=None, green=None, blue=None, hexcolor=None):
-        
+
         for y in self._grid:
 
             if len(self._type) == 1:
