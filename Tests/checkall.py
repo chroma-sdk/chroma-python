@@ -1,7 +1,7 @@
-from ChromaPython import ChromaApp, ChromaAppInfo, ChromaColor, Colors
+from ChromaPython import ChromaApp, ChromaAppInfo, ChromaColor, Colors, ChromaGrid
 from time import sleep
 
-Info = ChromaAppInfo
+Info = ChromaAppInfo()
 Info.DeveloperName = 'Rick Sanchez'
 Info.DeveloperContact = 'Wubba-lubba@dub-dub.com'
 Info.Category = 'application'
@@ -24,12 +24,19 @@ print(App.Mousepad.setStatic(Colors.BLUE))
 print(App.Mouse.setStatic(Colors.YELLOW))
 
 sleep(2)
-
-KeyboardGrid = [[ChromaColor(red=255, blue=0, green=0) for x in range(22)] for y in range(6)]
-MouseGrid = [[ChromaColor(red=255, blue=0, green=0) for x in range(7)] for y in range(9)]
-MousepadGrid = [ChromaColor(red=255, blue=0, green=0) for x in range(15)]
+# Oldschool
+# KeyboardGrid = [[ChromaColor(red=255, blue=0, green=0) for x in range(22)] for y in range(6)]
+# MouseGrid = [[ChromaColor(red=255, blue=0, green=0) for x in range(7)] for y in range(9)]
+# MousepadGrid = [ChromaColor(red=255, blue=0, green=0) for x in range(15)]
+# New
+KeyboardGrid = ChromaGrid('Keyboard')
+MouseGrid = ChromaGrid('Mouse')
+MousepadGrid = ChromaGrid('Mousepad')
 
 print('Setting all devices to red')
+KeyboardGrid.set(hexcolor="#FF0000")
+MousepadGrid.set(red=255, blue=0, green=0)
+MouseGrid.set(hexcolor="0xFF0000")
 print(App.Mousepad.setCustomGrid(MousepadGrid))
 print(App.Mouse.setCustomGrid(MouseGrid))
 print(App.Keyboard.setCustomGrid(KeyboardGrid))

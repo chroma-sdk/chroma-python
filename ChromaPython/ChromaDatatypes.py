@@ -78,12 +78,12 @@ class ChromaColor:
                     raise ValueError('Green-value out of range!')
                 if not 0 <= blue <= 255:
                     raise ValueError('Blue-value out of range!')
-                    
+
                 self._red = int(red)
                 self._green = int(green)
                 self._blue = int(blue)
                 return True
-                
+
             elif hexcolor is not None:
                 if hexcolor[0] == '#':
                     color = hexcolor[1:]
@@ -125,6 +125,48 @@ class ChromaColor:
             # TODO Add proper exception handling
             print('Unexpected Error!')
             raise
+
+
+class ChromaGrid:
+    def __init__(self, type: str):
+        self._types = {'Keyboard': [22, 6], 'Mouse': [7, 9], 'Mousepad': [15], 'ChromaLink': [5], 'Keypad': [4, 5],
+                       'Headset': [2]}
+        if not type in self._types:
+            print('Unexpected Error!')
+            raise
+        else:
+            self._type = self._types[type]
+        if len(self._type) == 1:
+            self._grid = [ChromaColor(red=0, blue=0, green=0) for x in range(self._type[0])]
+        else:
+            self._grid = [[ChromaColor(red=0, blue=0, green=0) for x in range(self._type[0])] for y in
+                          range(self._type[1])]
+
+    def __getitem__(self, item):
+        return self._grid[item]
+
+    def __len__(self):
+        return len(self._grid)
+
+    def clear(self):
+
+        for y in self._grid:
+
+            if len(self._type) == 1:
+                y.set(red=0, blue=0, green=0)
+            else:
+                for x in y:
+                    x.set(red=0, blue=0, green=0)
+
+    def set(self, red=None, green=None, blue=None, hexcolor=None):
+        
+        for y in self._grid:
+
+            if len(self._type) == 1:
+                y.set(red=red, green=green, blue=blue, hexcolor=hexcolor)
+            else:
+                for x in y:
+                    x.set(red=red, green=green, blue=blue, hexcolor=hexcolor)
 
 
 class ChromaKey:

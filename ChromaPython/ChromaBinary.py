@@ -10,7 +10,6 @@ class ChromaAnimation:
 
 
 class BinaryFile:
-
     class FileHeader:
         def __init__(self):
             self.HEADERSIZE = 14
@@ -67,7 +66,6 @@ class BinaryFile:
         self.BHeader = self.BcaHeader()
         self.FHeader = self.FileHeader()
         self.FrameList = []
-
 
 
 class BinaryDevice:
@@ -170,7 +168,7 @@ class ChromaBcaHandler:
                             blue = (color >> 16) & 255
                             temp[binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dRow][
                                 binary_file.FrameList[i].DeviceList[j].DeviceDataList[k].dCol].set(red=red, green=green,
-                                                                                            blue=blue)
+                                                                                                   blue=blue)
                         animation.Frames.append(temp)
             return animation
         except:
