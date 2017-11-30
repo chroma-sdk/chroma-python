@@ -8,21 +8,21 @@
 This project is still in active development!
 
 ## Support
-
+Windows and Linux
 ### Devices
 ```
-Keyboard
-Headset
-Mouse
-Headset
-Keypad
-ChromaLink
+Keyboard (Windows/Linux)
+Headset (Windows)
+Mouse (Windows)
+Headset (Windows)
+Keypad (Windows)
+ChromaLink (Windows)
 ```
 
 ### BCA
 #### Read
 ```
-Keyboard
+Keyboard (Windows/Linux)
 ```
 #### Write
 ```
@@ -57,9 +57,17 @@ Can be installed by
 ```
 pip install requests
 ```
-
 After installing requests, clone the repository and copy all files of the ChromaPython folder into your working directory. 
 
+##Software required 
+Requirements on Windows:
+```
+Razer Synapse  
+```
+Requirements on Linux:
+```
+openrazer driver 
+```
 
 ## Contributing
 Feel free to contribute by reporting issues and/or extending the current code. You can do this by forking this project
