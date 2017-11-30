@@ -1,11 +1,10 @@
-import requests
-from .LinuxDevices import LinuxDevices
 from .ChromaBinary import ChromaBcaHandler
 from .ChromaDatatypes import Heartbeat, ChromaAppInfo
 from .ChromaDevices import Keyboard, Mouse, Mousepad, ChromaLink, Headset
 from sys import platform
 
 if platform == "linux" or platform == "linux2":
+    from .LinuxDevices import LinuxDevices
 
     class ChromaApp:
         def __init__(self, Info: ChromaAppInfo):
@@ -20,6 +19,7 @@ if platform == "linux" or platform == "linux2":
 
 
 elif platform == "win32":
+    import requests
 
     class ChromaApp:
         def __init__(self, Info: ChromaAppInfo):
