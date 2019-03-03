@@ -44,3 +44,4 @@ class ChromaApp:
     def __del__(self):
         print('Im dying')
         self.heartbeat.stop()
+        requests.delete(self.URI)
