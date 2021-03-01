@@ -471,7 +471,7 @@ class Keypad:
     def __init__(self, uri: str):
         self._MaxRow = 4
         self._MaxColumn = 5
-        self._ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(22)] for y in range(6)]
+        self._ColorGrid = [[ChromaColor(red=0, green=0, blue=0) for x in range(5)] for y in range(4)]
         self._Keys = KeyboardKeys()
 
         try:
@@ -529,7 +529,7 @@ class Keypad:
             raise
 
     def applyGrid(self):
-        tmp = [[0 for x in range(22)] for y in range(6)]
+        tmp = [[0 for x in range(5)] for y in range(4)]
 
         for i in range(0, len(self._ColorGrid)):
             for j in range(0, len(self._ColorGrid[i])):
@@ -537,8 +537,9 @@ class Keypad:
 
         data = {
             "effect": "CHROMA_CUSTOM",
-            "param": [tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]]
+            "param": [tmp[0], tmp[1], tmp[2], tmp[3]]
         }
+
         try:
             return checkresult(requests.put(url=self._URI, json=data).json())
         except:

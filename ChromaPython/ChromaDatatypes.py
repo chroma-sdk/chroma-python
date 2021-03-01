@@ -129,7 +129,7 @@ class ChromaColor:
 
 class ChromaGrid:
     def __init__(self, type: str):
-        self._types = {'Keyboard': [22, 6], 'Mouse': [7, 9], 'Mousepad': [15], 'ChromaLink': [5], 'Keypad': [4, 5],
+        self._types = {'Keyboard': [22, 6], 'Mouse': [7, 9], 'Mousepad': [15], 'ChromaLink': [5], 'Keypad': [5, 4],
                        'Headset': [2]}
         try:
             self.rearrange(type=type)
@@ -145,7 +145,7 @@ class ChromaGrid:
     def rearrange(self, type: str):
         if not type in self._types:
             print('Unexpected Error!')
-            raise
+            raise Exception('Device type not found!')
         else:
             self._type = self._types[type]
         if len(self._type) == 1:
