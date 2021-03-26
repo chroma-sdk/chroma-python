@@ -5,7 +5,7 @@
 
 
 ## Disclaimer
-This project is still in active development!
+This project is mostly abandoned!
 
 ## Support
 
